@@ -1,0 +1,576 @@
+### 1. What is Express.js?
+
+**Question:**
+What is Express.js?
+
+**Answer:**
+Express.js is a minimal and flexible Node.js web application framework that provides a robust set of features to develop web and mobile applications. It simplifies Node.js’s APIs, adding middleware and routing capabilities, and facilitating the rendering of dynamic HTTP objects.
+
+**Example:**
+Express is part of the MEAN stack (MongoDB, Express.js, Angular, Node.js), which is used to build fast, robust, and maintainable production web applications.
+
+---
+
+### 2. Why use Express.js?
+
+**Question:**
+Why use Express.js?
+
+**Answer:**
+Express.js is favored for its simplicity, minimalism, flexibility, and scalability. It speeds up the process of creating server-side web applications by providing easy setup for middleware and routing.
+
+---
+
+### 3. Write a ‘Hello World’ Express.js application.
+
+**Question:**
+Write a ‘Hello World’ Express.js application.
+
+**Answer:**
+First, install Express.js using npm:
+```bash
+npm install express
+```
+Then, create an `app.js` file with the following code:
+```javascript
+const express = require('express');
+const app = express();
+const PORT = 8000;
+
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is listening at port: ${PORT}`);
+});
+```
+
+---
+
+### 4. Differentiate between Node.js and Express.js.
+
+**Question:**
+Differentiate between Node.js and Express.js.
+
+**Answer:**
+Node.js is a runtime environment for executing JavaScript on the server side, whereas Express.js is a web framework built on Node.js, providing tools and utilities for building web applications and APIs.
+
+---
+
+### 5. Is Express.js a front-end or a back-end framework?
+
+**Question:**
+Is Express.js a front-end or a back-end framework?
+
+**Answer:**
+Express.js is a back-end framework designed for developing complete web applications and APIs. It is the backend component of the MERN stack (MongoDB, Express.js, React.js, Node.js).
+
+---
+
+### 6. Mention a few features of Express.js.
+
+**Question:**
+Mention a few features of Express.js.
+
+**Answer:**
+- **Routing:** Simplifies defining routes for handling HTTP requests.
+- **Middleware:** Uses functions to handle tasks during the request-response cycle.
+- **HTTP Utility Methods:** Handles HTTP methods like GET, POST, PUT, and DELETE.
+- **Static File Serving:** Serves static files using built-in middleware.
+- **Security:** Includes middleware to enhance security, such as the Helmet middleware.
+
+---
+
+### 7. Explain the structure of an Express.js application.
+
+**Question:**
+Explain the structure of an Express.js application.
+
+**Answer:**
+A basic Express.js application structure typically includes:
+- **Entry Point:** Sets up the server, connects to the database, adds middleware, and defines main routes.
+- **Routes Directory:** Contains route files.
+- **Controllers Directory:** Defines logic for handling requests.
+- **Models Directory:** Creates schema models for data.
+- **Middleware Directory:** Contains custom middleware functions.
+- **Views Directory:** Holds view templates if using a templating engine.
+- **Public Directory:** Contains static files like images, CSS, and JavaScript.
+
+---
+
+### 8. What are some popular alternatives to Express.js?
+
+**Question:**
+What are some popular alternatives to Express.js?
+
+**Answer:**
+Popular alternatives to Express.js include Koa.js, Hapi.js, Sails.js, and Fastify.
+
+---
+
+### 9. Which major tools can be integrated with Express.js?
+
+**Question:**
+Which major tools can be integrated with Express.js?
+
+**Answer:**
+Express.js can be integrated with:
+- **Database Tools:** MongoDB, MySQL, PostgreSQL.
+- **Template Engines:** EJS, Pug, Mustache.
+- **Authentication Libraries:** Passport.js.
+- **Logging Libraries:** Morgan, Winston.
+- **Validation Libraries:** Joi, express-validator.
+- **ORM Libraries:** Sequelize, Mongoose.
+
+---
+
+### 10. What is the .env file used for?
+
+**Question:**
+What is the .env file used for?
+
+**Answer:**
+The `.env` file stores sensitive information such as passwords and database connection strings. It contains key-value pairs used to configure various aspects of the application.
+
+---
+
+### 11. What are JWTs?
+
+**Question:**
+What are JWTs?
+
+**Answer:**
+JSON Web Tokens (JWTs) are used for authentication and information exchange. When a user signs in, a JWT is assigned to them. Subsequent requests include the JWT, indicating the user’s access rights. JWTs consist of three parts: Header, Payload, and Signature.
+
+---
+
+### 12. Create a simple middleware for validating a user.
+
+**Question:**
+Create a simple middleware for validating a user.
+
+**Answer:**
+```javascript
+// Simple user validation middleware
+const validateUser = (req, res, next) => {
+  const user = req.user;
+
+  // Check if the user object is present
+  if (!user) {
+    return res.status(401).json({ error: 'Unauthorized - User not found' });
+  }
+
+  // If the user is valid, move to the next middleware or route handler
+  next();
+};
+
+// Example of using the middleware in an Express route
+app.get('/profile', validateUser, (req, res) => {
+  const user = req.user;
+  res.json({ message: 'Profile page', username: user.username });
+});
+```
+
+---
+
+### 13. What is Bcrypt used for?
+
+**Question:**
+What is Bcrypt used for?
+
+**Answer:**
+Bcrypt is a password hashing function used to securely hash and store user passwords. It is designed to be slow and computationally intensive, making it resistant to brute-force and rainbow table attacks.
+
+---
+
+### 14. Why should you separate the Express app and server?
+
+**Question:**
+Why should you separate the Express app and server?
+
+**Answer:**
+Separating the Express app and server provides modularity, ease of testing, reusability, cleaner configuration management, and a scalable code structure.
+
+---
+
+### 15. What do you understand about ESLint?
+
+**Question:**
+What do you understand about ESLint?
+
+**Answer:**
+ESLint is a JavaScript linting tool used to automatically detect incorrect patterns in ECMAScript/JavaScript code. It improves code quality, consistency, and helps avoid bugs.
+
+---
+
+### 16. Define the concept of the test pyramid.
+
+**Question:**
+Define the concept of the test pyramid.
+
+**Answer:**
+The Test Pyramid is a concept that suggests a testing strategy shaped like a pyramid, with the majority of tests at the base (Unit Tests), fewer Integration Tests in the middle, and the fewest End-to-End (E2E) Tests at the top.
+
+---
+
+### 17. Differentiate between res.send() and res.json().
+
+**Question:**
+Differentiate between res.send() and res.json().
+
+**Answer:**
+- **res.send():** Versatile, used to send various data types.
+- **res.json():** Specifically used for sending JSON data.
+
+---
+
+### 18. What is meant by Scaffolding in Express.js?
+
+**Question:**
+What is meant by Scaffolding in Express.js?
+
+**Answer:**
+Scaffolding in Express.js refers to generating a basic project structure automatically, speeding up the initial setup and maintaining consistency, especially in large teams.
+
+---
+
+### 19. How would you install an Express application generator for scaffolding?
+
+**Question:**
+How would you install an Express application generator for scaffolding?
+
+**Answer:**
+To install an Express application generator, use npm:
+```bash
+npm install -g express-generator
+```
+
+---
+
+### 20. What is Yeoman and how to install Yeoman for scaffolding?
+
+**Question:**
+What is Yeoman and how to install Yeoman for scaffolding?
+
+**Answer:**
+Yeoman is a scaffolding tool for web applications that helps create new projects with a generator-based workflow.
+
+To install Yeoman:
+```bash
+npm install -g yo
+```
+
+To install a generator:
+```bash
+npm install -g generator-express
+```
+
+To create a new application:
+```bash
+yo appname
+```
+
+---
+
+### 21. Explain what CORS is in Express.js.
+
+**Question:**
+Explain what CORS is in Express.js.
+
+**Answer:**
+CORS (Cross-Origin Resource Sharing) is a security feature that controls how web pages in one domain can request resources from another domain. In Express.js, CORS middleware enables Cross-Origin Resource Sharing, setting HTTP headers to control which domains can access your resources.
+
+---
+
+### 22. What are Built-in Middlewares in Express.js?
+
+**Question:**
+What are Built-in Middlewares in Express.js?
+
+**Answer:**
+Built-in middlewares in Express.js include:
+- **express.json():** Parses incoming JSON requests.
+- **express.Router():** Creates modular route handlers.
+- **express.static():** Serves static files from a specified directory.
+
+---
+
+### 23. How would you configure properties in Express.js?
+
+**Question:**
+How would you configure properties in Express.js?
+
+**Answer:**
+Use the `app.set()` method to configure properties in Express.js:
+```javascript
+app.set(name, value);
+```
+Here, `name` is the property name, and `value` is the value assigned to the property.
+
+---
+
+### 24. Which template engines do Express support?
+
+**Question:**
+Which template engines do Express support?
+
+**Answer:**
+Express.js supports any template engine that follows the `(path, locals, callback)` signature.
+
+---
+
+### 25. Elaborate on the various methods of debugging on both Linux and Windows systems.
+
+**Question:**
+Elaborate on the various methods of debugging on both Linux and Windows systems.
+
+**
+
+26. **What databases integrate with Express.js?**
+
+Express.js can support various databases, including:
+
+- MySQL
+- MongoDB
+- PostgreSQL
+- SQLite
+- Oracle
+
+27. **How can you render plain HTML using Express.js?**
+
+In Express.js, plain HTML can be rendered using either the `res.send()` method or the `res.sendFile()` method.
+
+```javascript
+// Using res.send 
+const express = require('express');
+const app = express();
+const port = 8000;
+
+app.get('/', (req, res) => {
+  const htmlContent = '<html><body><h1>Hello, World!</h1></body></html>';
+  res.send(htmlContent);
+});
+
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
+});
+```
+
+```javascript
+// Using res.sendFile 
+const express = require('express');
+const path = require('path');
+const app = express();
+const port = 8000;
+
+app.get('/', (req, res) => {
+  const filePath = path.join(__dirname, 'public', 'index.html');
+  res.sendFile(filePath);
+});
+
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
+});
+```
+
+28. **What is the purpose of the `response.cookie()` function in Express.js?**
+
+The `response.cookie()` function is used to set cookies in the HTTP response. Cookies store data on the client’s browser for various purposes, such as session management.
+
+Basic syntax:
+```javascript
+res.cookie(name, value, [options]);
+```
+
+29. **Under what conditions can a Cross-Origin Resource Sharing (CORS) request fail in Express.js?**
+
+A CORS request can fail under the following conditions:
+
+- No CORS headers are included in the server response.
+- The requesting origin does not match the `Access-Control-Allow-Origin` header.
+- Restricted HTTP methods are used in the cross-origin request.
+- Credentials are included in the request but not allowed by the server.
+
+30. **What is the Pug template engine in Express.js?**
+
+Pug is a template engine for Express.js that allows rendering of dynamic HTML pages on the server side. It uses a clean, indentation-based syntax for writing templates.
+
+31. **What does sanitizing input mean in Express.js?**
+
+Sanitizing input in Express.js involves cleaning and validating user input to prevent security risks such as XSS and SQL injection. This process ensures the input does not contain malicious code.
+
+32. **How can you generate a skeleton Express.js app using terminal commands?**
+
+To generate a skeleton Express.js application, use the Express application generator.
+
+Steps:
+1. Install the Express application generator globally:
+    ```bash
+    npm install -g express-generator
+    ```
+2. Generate your Express.js app:
+    ```bash
+    express my-express-app
+    ```
+3. Navigate to the app directory, install dependencies, and start the app:
+    ```bash
+    npm install
+    npm start
+    ```
+
+33. **What are middleware functions in Express.js?**
+
+Middleware functions in Express.js have access to the request and response objects and can modify them or pass control to the next middleware. They are used for various tasks such as logging, authentication, and error handling.
+
+34. **What are the different types of middleware in Express.js?**
+
+There are five main types of middleware in Express.js:
+- Application-level middleware
+- Router-level middleware
+- Error-handling middleware
+- Built-in middleware
+- Third-party middleware
+
+35. **List some built-in middleware functions provided by Express.js.**
+
+Express.js includes several built-in middleware functions, such as:
+- `express.json()`: Parses incoming requests with JSON payloads.
+- `express.static()`: Serves static files.
+- `express.urlencoded()`: Parses incoming requests with URL-encoded payloads.
+- `express.raw()`: Parses incoming requests with raw body.
+- `express.text()`: Parses incoming requests with text body.
+
+36. **What are some third-party middleware options available for Express.js?**
+
+Commonly used third-party middleware in Express.js includes:
+- `body-parser`: Parses incoming request bodies.
+- `cors`: Enables Cross-Origin Resource Sharing.
+- `morgan`: Provides request logging.
+- `helmet`: Sets security-related HTTP headers.
+- `express-session`: Manages user sessions.
+- `passport`: Implements authentication and authorization.
+
+37. **When is application-level middleware used?**
+
+Application-level middleware is bound to an instance of the Express application and is executed for every incoming request. Defined using the `app.use()` method, it performs tasks such as logging and authentication.
+
+38. **Explain router-level middleware in Express.js.**
+
+Router-level middleware is specific to an `express.Router()` instance and is only invoked for routes handled by that router. It allows applying middleware to specific subsets of routes.
+
+39. **How can you secure an Express.js application?**
+
+To secure an Express.js application, follow best practices such as:
+- Keeping dependencies updated.
+- Using the `helmet` middleware to set security-related HTTP headers.
+- Setting secure HTTP headers like CSP and HSTS.
+- Using HTTPS to encrypt data in transit.
+- Securing database access with parameterized queries.
+
+40. **What is the `express.Router()` function used for?**
+
+The `express.Router()` function creates a new router object. This object is used to define a group of routes in a modular way.
+
+Syntax:
+```javascript
+express.Router([options]);
+```
+
+41. **What are the primary types of HTTP requests?**
+
+The main HTTP methods, often referred to as CRUD operations, are:
+- `GET`: Requests data from a resource.
+- `POST`: Submits data to be processed.
+- `PUT`: Updates or creates a resource.
+- `PATCH`: Applies partial modifications to a resource.
+- `DELETE`: Requests the removal of a resource.
+
+42. **Do other MVC frameworks support scaffolding?**
+
+Yes, other MVC frameworks support scaffolding, including:
+- Ruby on Rails
+- Django
+- Laravel
+- Symfony
+- ASP.NET, and many more.
+
+43. **What arguments are available to an Express.js route handler function?**
+
+An Express.js route handler function typically has three arguments:
+- `req`: Represents the HTTP request object.
+- `res`: Represents the HTTP response object.
+- `next`: A callback function to pass control to the next middleware.
+
+44. **How do you handle errors in Express.js?**
+
+In Express.js, errors can be handled using the `next()` function. When an error occurs, pass it to the next middleware or route handler using `next(err)`. Additionally, you can define error-handling middleware to manage errors globally.
+
+45. **What is the difference between a traditional server and an Express.js server?**
+
+A traditional server is independently built and managed, providing basic HTTP handling. An Express.js server, built on Node.js, offers a simple and efficient way to create web applications with extensive features for routing, middleware, and request/response handling.
+
+46. **What is the purpose of the `next()` function in Express.js?**
+
+The `next()` function is used to pass control to the next middleware function in the chain. It ensures the request-response cycle continues and subsequent middleware functions are executed.
+
+47. **What is the difference between `app.route()` and `app.use()` in Express.js?**
+
+`app.route()` is used for route-specific handling, allowing multiple handlers for a single route. `app.use()` applies middleware globally or to specific routes, providing a more general-purpose method.
+
+48. **What is dynamic routing in Express.js?**
+
+Dynamic routing allows creating flexible routes with parameters, enabling customization based on provided data. This is achieved using route parameters, denoted by a colon (`:`).
+
+Example:
+```javascript
+const express = require('express');
+const app = express();
+
+app.get('/users/:userId', (req, res) => {
+  const userId = req.params.userId;
+  res.send(`User ID: ${userId}`);
+});
+
+const port = 8000;
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
+});
+```
+
+49. **How do you serve static files in Express.js?**
+
+Use the built-in `express.static` middleware to serve static files. Provide the root directory of your static files to this middleware.
+
+Example:
+```javascript
+const express = require('express');
+const app = express();
+
+app.use(express.static('public'));
+
+const port = 8000;
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
+});
+```
+
+50. **What is the use of `app.use()` in Express.js?**
+
+`app.use()` is used to add middleware functions to an Express application. It can add global middleware functions or middleware specific to certain routes.
+
+Example:
+```javascript
+const express = require('express');
+const app = express();
+
+app.use((req, res, next) => {
+  console.log('Middleware executed');
+  next();
+});
+
+const port = 8000;
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
+});
+```
